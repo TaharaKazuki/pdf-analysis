@@ -32,6 +32,7 @@
     "ecommerce",
     "neondatabase",
     "NEXTAUTH",
+    "picsum",
     "Prostore",
     "Sonner",
     "turbopack",
@@ -42,7 +43,6 @@
   },
   "eslint.enable": true,
   "eslint.format.enable": true,
-  "eslint.packageManager": "npm",
   "eslint.run": "onSave",
   "eslint.useESLintClass": true,
   "files.autoSave": "onFocusChange"
