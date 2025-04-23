@@ -1,0 +1,49 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.validate": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "prettier.configPath": ".prettierrc",
+  "prettier.requireConfig": true,
+  "prettier.documentSelectors": ["**/*.{ts,tsx,js,jsx,css,scss,html}"],
+  "cSpell.words": [
+    "cuid",
+    "dbgenerated",
+    "ecommerce",
+    "neondatabase",
+    "NEXTAUTH",
+    "Prostore",
+    "Sonner",
+    "turbopack",
+    "utfs"
+  ],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.packageManager": "npm",
+  "eslint.run": "onSave",
+  "eslint.useESLintClass": true,
+  "files.autoSave": "onFocusChange"
+}
