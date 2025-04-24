@@ -40,6 +40,7 @@ const DashboardContent = () => {
   return (
     <>
       <div className="mx-auto mt-24 max-w-4xl space-y-10">
+        {/* Success Popup */}
         {!showPaymentSuccess && (
           <div className="mx-auto my-8 rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-green-400">
             <div className="flex items-center justify-center">
@@ -77,14 +78,29 @@ const DashboardContent = () => {
           </button>
         </div>
 
+        {/* Error Popup */}
         {!error && (
           <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-red-400">
-            <div className="flex items-start">
+            <div className="flex items-start justify-center">
               <AlertCircle className="mt-0.5 mr-2 h-5 w-5" />
               <div>
                 <p className="mb-1 font-medium">Error analyzing document</p>
                 <p>{error}</p>
               </div>
+            </div>
+          </div>
+        )}
+
+        {summary && (
+          <div className="rounded-2xl border border-[#2A2A35] bg-black/20 p-8 shadow-[0_4px_20px_-10px] shadow-purple-200/30">
+            <div className="mb-6 flex items-center">
+              <div className="mr-3 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-2">
+                <FileText className="h-6 w-6 text-purple-400" />
+              </div>
+            </div>
+
+            <div className="max-w-none rounded-xl border border-[#2A2A35] bg-[#0f0f13] px-6 py-5">
+              {summary}
             </div>
           </div>
         )}
