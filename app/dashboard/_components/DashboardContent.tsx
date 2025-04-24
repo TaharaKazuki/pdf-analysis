@@ -3,7 +3,7 @@
 import { useUser } from '@clerk/nextjs';
 import { AlertCircle, CheckCircle, FileText } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 const DashboardContent = () => {
   const { user, isLoaded } = useUser();
   const router = useRouter();
@@ -36,6 +36,23 @@ const DashboardContent = () => {
 
     setSelectedFile(e.target.files[0]);
   };
+
+  const handleAnalyze = useCallback(async () => {
+    if (!selectedFile) {
+      setError('Please select a file before analyzing');
+      return;
+    }
+    setIsLoading(true);
+    setError('');
+    setSummary('');
+
+    try {
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : 'Failed to analyze PDF.'
+      );
+    }
+  }, [selectedFile]);
 
   return (
     <>
