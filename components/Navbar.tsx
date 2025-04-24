@@ -7,6 +7,11 @@ import { useCallback, useState } from 'react';
 import MenuButton from '@/components/mobile/MenuButton';
 import MenuNavigation from '@/components/mobile/MenuNavigation';
 
+const LINKS = [
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/pricing', label: 'Pricing' },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -27,18 +32,15 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden items-center space-x-4 md:flex">
-            <Link
-              href="/dashboard"
-              className="px-4 py-2 text-white/70 transition-all duration-300 hover:rounded-md hover:text-white hover:shadow-[0_2px_8px_0] hover:shadow-purple-400/40"
-            >
-              Dashboard
-            </Link>
-            <Link
-              href="/pricing"
-              className="px-4 py-2 text-white/70 transition-all duration-300 hover:rounded-md hover:text-white hover:shadow-[0_2px_8px_0] hover:shadow-purple-400/40"
-            >
-              Pricing
-            </Link>
+            {LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-2 text-white/70 transition-all duration-300 hover:rounded-md hover:text-white hover:shadow-[0_2px_8px_0] hover:shadow-purple-400/40"
+              >
+                {link.label}
+              </Link>
+            ))}
             <SignedIn>
               <SignOutButton>
                 <button className="px-4 py-2 text-white/70 transition-all duration-300 hover:rounded-md hover:text-white hover:shadow-[0_2px_8px_0] hover:shadow-purple-400/40">
