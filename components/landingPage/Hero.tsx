@@ -1,6 +1,9 @@
 'use client';
 
 import { FileText, Search, Zap } from 'lucide-react';
+
+import ButtonGlowing from './ButtonGlowing';
+
 const RINGS = [
   { width: 300, height: 300, opacity: 0.7 },
   { width: 500, height: 500, opacity: 0.5 },
@@ -48,7 +51,7 @@ const Hero = () => {
           Extract insights from your documents instantly with our AI-powered
           analysis tool
         </p>
-        {/* ButtonGlowing */}
+        <ButtonGlowing text="Get Started" href="/pricing" />
       </div>
       {/* Feature icons */}
       <div className="z-10 mt-16 flex flex-wrap justify-center gap-8 px-4">
