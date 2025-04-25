@@ -3,6 +3,7 @@ import type { TextContent, TextItem } from 'pdfjs-dist/types/src/display/api';
 
 import { PDF_PROCESSING } from './constant';
 
+// クライアントサイドでのみworkerを設定
 if (typeof window !== 'undefined') {
   GlobalWorkerOptions.workerSrc = PDF_PROCESSING.WORKER_SRC;
 }
@@ -13,6 +14,11 @@ if (typeof window !== 'undefined') {
  * @returns 抽出されたテキスト
  */
 export const extractTextFromPDF = async (file: File): Promise<string> => {
+  // サーバーサイドの場合はエラーを投げる
+  if (typeof window === 'undefined') {
+    throw new Error('この関数はクライアントサイドでのみ実行できます');
+  }
+
   if (!file) {
     throw new Error('ファイルが提供されていません');
   }
