@@ -1,3 +1,5 @@
+'use client';
+
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist';
 import type { TextContent, TextItem } from 'pdfjs-dist/types/src/display/api';
 
@@ -14,11 +16,6 @@ if (typeof window !== 'undefined') {
  * @returns 抽出されたテキスト
  */
 export const extractTextFromPDF = async (file: File): Promise<string> => {
-  // サーバーサイドの場合はエラーを投げる
-  if (typeof window === 'undefined') {
-    throw new Error('この関数はクライアントサイドでのみ実行できます');
-  }
-
   if (!file) {
     throw new Error('ファイルが提供されていません');
   }
