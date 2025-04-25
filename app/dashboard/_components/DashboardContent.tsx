@@ -4,8 +4,6 @@ import { AlertCircle, CheckCircle, FileText } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
-import { extractTextFromPDF } from '@/lib/pdfUtils';
-
 const DashboardContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -48,6 +46,7 @@ const DashboardContent = () => {
     setSummary('');
 
     try {
+      const { extractTextFromPDF } = await import('@/lib/pdfUtils');
       const text = await extractTextFromPDF(selectedFile);
       setSummary(text);
     } catch (error) {
@@ -122,7 +121,7 @@ const DashboardContent = () => {
               </div>
             </div>
 
-            <div className="max-w-none rounded-xl border border-[#2A2A35] bg-[#0f0f13] px-6 py-5">
+            <div className="max-w-none rounded-xl border border-[#2A2A35] bg-[#0f0f13] px-6 py-5 whitespace-pre-wrap">
               {summary}
             </div>
           </div>
