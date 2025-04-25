@@ -47,10 +47,15 @@ const DashboardContent = () => {
     setSummary('');
 
     try {
+      const text = '';
+
+      const response = '';
     } catch (error) {
       setError(
         error instanceof Error ? error.message : 'Failed to analyze PDF.'
       );
+    } finally {
+      setIsLoading(false);
     }
   }, [selectedFile]);
 
