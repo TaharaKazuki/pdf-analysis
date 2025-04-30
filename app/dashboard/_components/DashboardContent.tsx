@@ -48,7 +48,25 @@ const DashboardContent = () => {
     try {
       const { extractTextFromPDF } = await import('@/lib/pdfUtils');
       const text = await extractTextFromPDF(selectedFile);
-      setSummary(text);
+
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ text: text.substring(0, 10000) }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          errorData.error || `HTTP error! status: ${response.status}`
+        );
+      }
+      const data = await response.json();
+
+      setSummary(data.summary || 'No summary was generated.');
     } catch (error) {
       setError(
         error instanceof Error ? error.message : 'Failed to analyze PDF.'

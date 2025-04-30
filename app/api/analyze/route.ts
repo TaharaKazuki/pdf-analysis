@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   try {
     await rateLimiter(request);
 
-    const body = await request.json();
+    const body = await request.json().catch(() => {});
     const { text } = body;
 
     if (!text || typeof text !== 'string') {
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       }
     );
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = await response.json().catch(() => {});
 
       throw new ApiError(
         response.status,
