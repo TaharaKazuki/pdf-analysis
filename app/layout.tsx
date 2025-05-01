@@ -29,6 +29,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="ja" className="dark">
         <body
+          suppressHydrationWarning
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Navbar />
